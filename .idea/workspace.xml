@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9bc43daf-50c3-4f4e-9bf0-6653e59fee7b" name="Changes" comment="Minor fix">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/Command.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/FakeMessageReceiver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/Message.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/MessageDecryptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/MessageHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/MessageProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/MessageReceiver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/MessageSender.java" afterDir="false" />
+    <list default="true" id="9bc43daf-50c3-4f4e-9bf0-6653e59fee7b" name="Changes" comment="ServerApp finished">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/ServerApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/ServerApp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +18,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -45,6 +38,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Main.executor": "Run",
+    "Application.ServerApp.executor": "Run",
     "JUnit.MainTest.executor": "Run",
     "JUnit.MainTest.givenBytesArray_shouldDecodeMessage.executor": "Run",
     "JUnit.MainTest.givenMessage_shouldEncodeToHexString.executor": "Run",
@@ -128,7 +122,7 @@
       <workItem from="1749401359557" duration="6749000" />
       <workItem from="1749408639205" duration="2385000" />
       <workItem from="1749412990672" duration="142000" />
-      <workItem from="1749413174343" duration="1140000" />
+      <workItem from="1749413174343" duration="2397000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -154,7 +148,23 @@
       <option name="project" value="LOCAL" />
       <updated>1749413073527</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Partial functionality added">
+      <option name="closed" value="true" />
+      <created>1749414335971</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1749414335971</updated>
+    </task>
+    <task id="LOCAL-00005" summary="ServerApp finished">
+      <option name="closed" value="true" />
+      <created>1749414535208</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1749414535208</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,6 +174,8 @@
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Added AES encryption" />
     <MESSAGE value="Minor fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor fix" />
+    <MESSAGE value="Partial functionality added" />
+    <MESSAGE value="ServerApp finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="ServerApp finished" />
   </component>
 </project>

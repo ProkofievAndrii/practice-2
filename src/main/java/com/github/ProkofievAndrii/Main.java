@@ -14,56 +14,45 @@ public class Main {
     }
 
     private static void demonstrate(CreateProduct product) {
-        byte[] encoded = encode(product);
-        System.out.println(bytesToHex(encoded));
-        String decoded = decode(encoded);
-        System.out.println(decoded);
-    }
-
-    public static byte[] encode(CreateProduct product) {
         try {
             ObjectMapper mapper = new ObjectMapper();
             String json = mapper.writeValueAsString(product);
-            byte[] jsonBytes = json.getBytes(StandardCharsets.UTF_8);
 
-            ByteBuffer plainMessage = ByteBuffer.allocate(8 + jsonBytes.length).order(ByteOrder.BIG_ENDIAN);
-            plainMessage.putInt(0x00000001);
-            plainMessage.putInt(0x00000042);
-            plainMessage.put(jsonBytes);
+            byte[] encoded = encode(json);
+            System.out.println(bytesToHex(encoded));
 
-            byte[] encryptedMessage = CypherUtils.encrypt(plainMessage.array());
-
-            int messageSize = encryptedMessage.length;
-            int headerSize = 1 + 1 + 8 + 4 + 2 + 2;
-            int totalSize = headerSize + messageSize + 2;
-
-            ByteBuffer buffer = ByteBuffer.allocate(totalSize).order(ByteOrder.BIG_ENDIAN);
-            buffer.put((byte) 0x13);
-            buffer.put((byte) 0x01);
-            buffer.putLong(1);
-            buffer.putInt(messageSize);
-
-            short crcHeader = Crc16.calculateCRC(buffer.array(), 0, 14);
-            buffer.putShort(crcHeader);
-            buffer.put(encryptedMessage);
-
-            short crcMessage = Crc16.calculateCRC(encryptedMessage, 0, encryptedMessage.length);
-            buffer.putShort(crcMessage);
-
-            return buffer.array();
+            String decodedJson = decode(encoded);
+            System.out.println(decodedJson);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
     public static byte[] encode(String json) {
         try {
-            ObjectMapper mapper = new ObjectMapper();
-            CreateProduct fakeWrapper = new CreateProduct(); // временно используем CreateProduct как оболочку
-            fakeWrapper.name = json; // используем поле name как обертку для JSON
-            return encode(fakeWrapper);
+            byte[] jsonBytes = json.getBytes(StandardCharsets.UTF_8);
+            ByteBuffer plainMessage = ByteBuffer.allocate(8 + jsonBytes.length).order(ByteOrder.BIG_ENDIAN);
+            plainMessage.putInt(0x00000001);
+            plainMessage.putInt(0x00000042);
+            plainMessage.put(jsonBytes);
+
+            byte[] encrypted = CypherUtils.encrypt(plainMessage.array());
+            int msgLen = encrypted.length;
+            int headerSize = 1 + 1 + 8 + 4 + 2 + 2;
+            int total = headerSize + msgLen + 2;
+            ByteBuffer buf = ByteBuffer.allocate(total).order(ByteOrder.BIG_ENDIAN);
+            buf.put((byte)0x13);
+            buf.put((byte)0x01);
+            buf.putLong(1L);
+            buf.putInt(msgLen);
+            short crcHeader = Crc16.calculateCRC(buf.array(), 0, 14);
+            buf.putShort(crcHeader);
+            buf.put(encrypted);
+            short crcMsg = Crc16.calculateCRC(encrypted, 0, encrypted.length);
+            buf.putShort(crcMsg);
+            return buf.array();
         } catch (Exception e) {
-            throw new RuntimeException("Failed to wrap JSON into CreateProduct", e);
+            throw new RuntimeException(e);
         }
     }
 
