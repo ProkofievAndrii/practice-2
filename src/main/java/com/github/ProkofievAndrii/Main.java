@@ -56,6 +56,17 @@ public class Main {
         }
     }
 
+    public static byte[] encode(String json) {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            CreateProduct fakeWrapper = new CreateProduct(); // временно используем CreateProduct как оболочку
+            fakeWrapper.name = json; // используем поле name как обертку для JSON
+            return encode(fakeWrapper);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to wrap JSON into CreateProduct", e);
+        }
+    }
+
     public static String decode(byte[] messageBytes) {
         try {
             ByteBuffer buffer = ByteBuffer.wrap(messageBytes).order(ByteOrder.BIG_ENDIAN);
@@ -95,7 +106,6 @@ public class Main {
             throw new IllegalArgumentException("Invalid message CRC16");
         }
     }
-
 
     private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
 

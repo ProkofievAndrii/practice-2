@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9bc43daf-50c3-4f4e-9bf0-6653e59fee7b" name="Changes" comment="Added AES encryption" />
+    <list default="true" id="9bc43daf-50c3-4f4e-9bf0-6653e59fee7b" name="Changes" comment="Minor fix">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/Command.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/FakeMessageReceiver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/Message.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/MessageDecryptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/MessageHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/MessageProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/MessageReceiver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/MessageSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/Main.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +26,7 @@
       <list>
         <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -48,6 +60,9 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -112,6 +127,8 @@
       <updated>1749401358405</updated>
       <workItem from="1749401359557" duration="6749000" />
       <workItem from="1749408639205" duration="2385000" />
+      <workItem from="1749412990672" duration="142000" />
+      <workItem from="1749413174343" duration="1140000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -129,7 +146,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749410135875</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Minor fix">
+      <option name="closed" value="true" />
+      <created>1749413073527</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1749413073527</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -138,6 +163,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Added AES encryption" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added AES encryption" />
+    <MESSAGE value="Minor fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor fix" />
   </component>
 </project>
