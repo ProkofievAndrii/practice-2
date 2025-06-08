@@ -1,71 +1,103 @@
 package com.github.ProkofievAndrii;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.SneakyThrows;
-
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.nio.charset.StandardCharsets;
 
 public class Main {
+    public static void main(String[] args) throws Exception {
+        CreateProduct product = new CreateProduct("Test", 100.0, true);
+        demonstrate(product);
+        CreateProduct product2 = new CreateProduct("Lorem Ipsum", 29.02, false);
+        demonstrate(product2);
+    }
+
+    private static void demonstrate(CreateProduct product) {
+        byte[] encoded = encode(product);
+        System.out.println(bytesToHex(encoded));
+        String decoded = decode(encoded);
+        System.out.println(decoded);
+    }
+
+    public static byte[] encode(CreateProduct product) {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            String json = mapper.writeValueAsString(product);
+            byte[] jsonBytes = json.getBytes(StandardCharsets.UTF_8);
+
+            ByteBuffer plainMessage = ByteBuffer.allocate(8 + jsonBytes.length).order(ByteOrder.BIG_ENDIAN);
+            plainMessage.putInt(0x00000001);
+            plainMessage.putInt(0x00000042);
+            plainMessage.put(jsonBytes);
+
+            byte[] encryptedMessage = CypherUtils.encrypt(plainMessage.array());
+
+            int messageSize = encryptedMessage.length;
+            int headerSize = 1 + 1 + 8 + 4 + 2 + 2;
+            int totalSize = headerSize + messageSize + 2;
+
+            ByteBuffer buffer = ByteBuffer.allocate(totalSize).order(ByteOrder.BIG_ENDIAN);
+            buffer.put((byte) 0x13);
+            buffer.put((byte) 0x01);
+            buffer.putLong(1);
+            buffer.putInt(messageSize);
+
+            short crcHeader = Crc16.calculateCRC(buffer.array(), 0, 14);
+            buffer.putShort(crcHeader);
+            buffer.put(encryptedMessage);
+
+            short crcMessage = Crc16.calculateCRC(encryptedMessage, 0, encryptedMessage.length);
+            buffer.putShort(crcMessage);
+
+            return buffer.array();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static String decode(byte[] messageBytes) {
+        try {
+            ByteBuffer buffer = ByteBuffer.wrap(messageBytes).order(ByteOrder.BIG_ENDIAN);
+
+            buffer.position(2); // пропускаем bMagic, bSrc
+            long pktId = buffer.getLong();
+            int messageLength = buffer.getInt();
+            buffer.position(buffer.position() + 2); // пропускаем первый CRC16
+
+            if (messageBytes.length < buffer.position() + messageLength + 2) {
+                throw new IllegalArgumentException("Packet too short");
+            }
+
+            byte[] encryptedMessage = new byte[messageLength];
+            buffer.get(encryptedMessage);
+            short receivedCrc = buffer.getShort();
+            short calculatedCrc = Crc16.calculateCRC(encryptedMessage, 0, encryptedMessage.length);
+            if (receivedCrc != calculatedCrc) {
+                throw new IllegalArgumentException("Invalid message CRC16");
+            }
+
+            byte[] decrypted = CypherUtils.decrypt(encryptedMessage);
+            if (decrypted.length < 8) {
+                throw new IllegalArgumentException("Message too short");
+            }
+
+            ByteBuffer msgBuffer = ByteBuffer.wrap(decrypted).order(ByteOrder.BIG_ENDIAN);
+            int cType = msgBuffer.getInt();
+            int bUserId = msgBuffer.getInt();
+
+            int jsonLen = decrypted.length - 8;
+            byte[] jsonBytes = new byte[jsonLen];
+            msgBuffer.get(jsonBytes, 0, jsonLen);
+
+            return new String(jsonBytes, StandardCharsets.UTF_8);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Invalid message CRC16");
+        }
+    }
+
+
     private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
-    private static ObjectMapper objectMapper = new ObjectMapper();
-
-    public static void main(String[] args) {
-        CreateProduct message = new CreateProduct("test", 100.0);
-        byte[] out = encode(message);
-        System.out.println(bytesToHex(out));
-        CreateProduct decodedOut = decode(out);
-        System.out.println(decodedOut);
-    }
-
-    @SneakyThrows
-    public static byte[] encode(CreateProduct message) {
-        byte[] messageBytes = objectMapper.writeValueAsBytes(message);
-        int messageSize = messageBytes.length + 4 + 4;
-        int headerSize = 1 + 1 + 8 + 4 + 2;
-        int size = headerSize + messageSize + 2;
-        ByteBuffer buffer = ByteBuffer.allocate(size).order(ByteOrder.BIG_ENDIAN);
-        buffer.put((byte) 0x13)
-                .put((byte) 1)
-                .putLong(1)
-                .putInt(messageSize);
-
-        short headerCrc = Crc16.calculateCRC(buffer.array(), 0, buffer.position());
-        buffer.putShort(headerCrc)
-                .putInt(3)
-                .putInt(4)
-                .put(messageBytes);
-
-        short bodyCrc = Crc16.calculateCRC(buffer.array(), headerSize, messageSize);
-        buffer.putShort(bodyCrc);
-
-        return buffer.array();
-    }
-
-    @SneakyThrows
-    public static CreateProduct decode(byte[] bytes) {
-        ByteBuffer buffer = ByteBuffer.wrap(bytes);
-        byte magicB = buffer.get();
-        if (magicB != 0x13)
-            throw new IllegalArgumentException();
-        byte bSrc = buffer.get();
-        long bPktId = buffer.getLong();
-        int wLen = buffer.getInt();
-        short wCrc16 = buffer.getShort();
-        short expectedCrc = Crc16.calculateCRC(buffer.array(), 0, 14);
-        if (wCrc16 != expectedCrc)
-            throw new IllegalArgumentException();
-        int cType = buffer.getInt();
-        int bUserID = buffer.getInt();
-        int messageSize = wLen - 8;
-        byte[] messageBytes = new byte[messageSize];
-        buffer.get(messageBytes, 0, messageSize);
-        short w2Crc16 = buffer.getShort(bytes.length - 2);
-        short expectedCrc2 = Crc16.calculateCRC(buffer.array(), 16, wLen);
-        if (w2Crc16 != expectedCrc2)
-            throw new IllegalArgumentException();
-        return objectMapper.readValue(messageBytes, CreateProduct.class);
-    }
 
     public static String bytesToHex(byte[] bytes) {
         char[] hexChars = new char[bytes.length * 2];

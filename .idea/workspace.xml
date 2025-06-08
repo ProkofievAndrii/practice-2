@@ -4,17 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9bc43daf-50c3-4f4e-9bf0-6653e59fee7b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/Crc16.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/CreateProduct.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/github/ProkofievAndrii/MainTest.java" afterDir="false" />
+    <list default="true" id="9bc43daf-50c3-4f4e-9bf0-6653e59fee7b" name="Changes" comment="Initial commit">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/CypherUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/CreateProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/CreateProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/github/ProkofievAndrii/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/github/ProkofievAndrii/MainTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,17 +19,17 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2yEYmMsM0yneBAOlyV01vXQJcNo" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -43,8 +38,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Main.executor": "Debug",
+    "Application.Main.executor": "Run",
     "JUnit.MainTest.executor": "Run",
+    "JUnit.MainTest.givenBytesArray_shouldDecodeMessage.executor": "Run",
+    "JUnit.MainTest.givenMessage_shouldEncodeToHexString.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -64,9 +61,52 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii" />
+    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.github.ProkofievAndrii" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="MainTest.givenBytesArray_shouldDecodeMessage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="practice-1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.github.ProkofievAndrii.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.github.ProkofievAndrii" />
+      <option name="MAIN_CLASS_NAME" value="com.github.ProkofievAndrii.MainTest" />
+      <option name="METHOD_NAME" value="givenBytesArray_shouldDecodeMessage" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainTest.givenMessage_shouldEncodeToHexString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="practice-1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.github.ProkofievAndrii.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.github.ProkofievAndrii" />
+      <option name="MAIN_CLASS_NAME" value="com.github.ProkofievAndrii.MainTest" />
+      <option name="METHOD_NAME" value="givenMessage_shouldEncodeToHexString" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.MainTest.givenMessage_shouldEncodeToHexString" />
+        <item itemvalue="JUnit.MainTest.givenBytesArray_shouldDecodeMessage" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -76,22 +116,25 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1749401358405</updated>
-      <workItem from="1749401359557" duration="6343000" />
+      <workItem from="1749401359557" duration="6749000" />
+      <workItem from="1749408639205" duration="1437000" />
     </task>
+    <task id="LOCAL-00001" summary="Initial commit">
+      <option name="closed" value="true" />
+      <created>1749408207262</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1749408207262</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/Main.java</url>
-          <line>15</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
   </component>
 </project>
