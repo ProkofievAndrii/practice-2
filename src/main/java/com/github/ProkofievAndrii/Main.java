@@ -60,10 +60,10 @@ public class Main {
         try {
             ByteBuffer buffer = ByteBuffer.wrap(messageBytes).order(ByteOrder.BIG_ENDIAN);
 
-            buffer.position(2); // пропускаем bMagic, bSrc
+            buffer.position(2);
             long pktId = buffer.getLong();
             int messageLength = buffer.getInt();
-            buffer.position(buffer.position() + 2); // пропускаем первый CRC16
+            buffer.position(buffer.position() + 2);
 
             if (messageBytes.length < buffer.position() + messageLength + 2) {
                 throw new IllegalArgumentException("Packet too short");

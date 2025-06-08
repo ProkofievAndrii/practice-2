@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9bc43daf-50c3-4f4e-9bf0-6653e59fee7b" name="Changes" comment="Initial commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/CypherUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/CreateProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/CreateProduct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/ProkofievAndrii/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/github/ProkofievAndrii/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/github/ProkofievAndrii/MainTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="9bc43daf-50c3-4f4e-9bf0-6653e59fee7b" name="Changes" comment="Added AES encryption" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -117,7 +111,7 @@
       <option name="presentableId" value="Default" />
       <updated>1749401358405</updated>
       <workItem from="1749401359557" duration="6749000" />
-      <workItem from="1749408639205" duration="1437000" />
+      <workItem from="1749408639205" duration="2385000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -127,7 +121,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749408207262</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added AES encryption">
+      <option name="closed" value="true" />
+      <created>1749410135875</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1749410135875</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,6 +137,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+    <MESSAGE value="Added AES encryption" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added AES encryption" />
   </component>
 </project>
